@@ -15,7 +15,11 @@ boton.addEventListener("click",validar_formulario);
 comentario.addEventListener("keyup",contador);
 
 function contador() {
-contador_caracteres.innerHTML = "Caracteres restantes: " + (200 - comentario.value.length);
+var contador_letras = 500 - comentario.value.length
+contador_caracteres.innerHTML = "Caracteres restantes: " + contador_letras;
+    if (contador_letras < 0) {
+        contador_caracteres.style.color = "rgb(238, 9, 9)";
+    } else contador_caracteres.style.color = "rgb(94, 92, 92)";
 }
 
 function validar_formulario() {
@@ -69,8 +73,8 @@ function validar_formulario() {
         chequeo[8] = "error";
     } else chequeo[8] = "ok";
 
-    if (comentario.value.length > 200) {
-        aviso.innerHTML += "<p>* Ha excedido los 200 caracteres</p>";
+    if (comentario.value.length > 500) {
+        aviso.innerHTML += "<p>* Ha excedido los 500 caracteres</p>";
         chequeo[9] = "error";
     } else chequeo[9] = "ok";
 
